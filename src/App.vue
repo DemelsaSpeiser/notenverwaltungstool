@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="pc">
     <h1>Notenverwaltung</h1>
     <table>
       <tr>
@@ -59,7 +59,7 @@
       <tr>
         <th>Gesamt</th>
         <td></td>
-        <td></td>
+        <td>{{ avgGesamt }}</td>
         <td></td>
       </tr>
     </table>
@@ -131,10 +131,14 @@ export default {
     let totalSport = ref(0)
 
     // Gesamt
-    const newGesamt = ref("")
-    const Gesamt = ref([])
-    let countGesamt = ref(0)
-    let totalGesamt = ref(0)
+    let fach1 = ref(0)
+    let fach2 = ref(0)
+    let fach3 = ref(0)
+    let fach4 = ref(0)
+    let fach5 = ref(0)
+    let fach6 = ref(0)
+    let fach7 = ref(0)
+    let fach8 = ref(0)
 
 
 
@@ -269,13 +273,57 @@ export default {
     function avgGesamt(){
       if(avg151 != 0){
         countAVG.value = countAVG.value + 1;
+        fach1.value = avg151.value;
+      } else {
+        fach1.value = '0';
       }
       if(avg152 != 0){
         countAVG.value = countAVG.value + 1;
+        fach2.value = avg152.value;
+      } else {
+        fach2.value = '0';
       }
       if(avg153 != 0){
         countAVG.value = countAVG.value + 1;
+        fach3.value = avg153.value;
+      } else {
+        fach3.value = '0';
       }
+      if(avg306 != 0){
+        countAVG.value = countAVG.value + 1;
+        fach4.value = avg306.value;
+      } else {
+        fach4.value = '0';
+      }
+      if(avgABU != 0){
+        countAVG.value = countAVG.value + 1;
+        fach5.value = avgABU.value;
+      } else {
+        fach5.value = '0';
+      }
+      if(avgNW != 0){
+        countAVG.value = countAVG.value + 1;
+        fach6.value = avgNW.value;
+      } else {
+        fach6.value = '0';
+      }
+      if(avgRW != 0){
+        countAVG.value = countAVG.value + 1;
+        fach7.value = avgRW.value;
+      } else {
+        fach7.value = '0';
+      }
+      if(avgSport != 0){
+        countAVG.value = countAVG.value + 1;
+        fach8.value = avgSport.value;
+      } else {
+        fach8.value = '0';
+      }
+      if(countAVG.value === 0){
+        return 0
+      }
+      fachGesamt = fach1.value + fach2.value + fach3.value + fach4.value + fach5.value + fach6.value + fach7.value + fach8.value;
+      return fachGesamt.value / countAVG.value;
     }
 
     return{
@@ -313,13 +361,14 @@ export default {
       avgSport,
       precise_round,
       round,
+      //avgGesamt, Hat eine falsche Ausgabe gegeben
     }
   }
 }
 </script>
 
 <style lang="scss">
-.home{
+.pc{
   margin: 5px 10px;
   h1{
     text-align: center;
